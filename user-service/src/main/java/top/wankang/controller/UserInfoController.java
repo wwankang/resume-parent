@@ -1,9 +1,6 @@
 package top.wankang.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author wankang
@@ -18,4 +15,10 @@ public class UserInfoController {
         System.out.println("userList执行。。。");
         return name;
     }
+    @RequestMapping("/hello")
+    @ResponseBody
+    public String helloWorld(){
+        return "spring security hello world";
+    }
+
 }
