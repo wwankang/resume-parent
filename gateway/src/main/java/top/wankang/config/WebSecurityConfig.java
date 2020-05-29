@@ -13,10 +13,6 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private AuthenticationSuccessHandler authenticationSuccessHandler;
-    @Autowired
-    private AuthenticationFailureHandler authenticationFailureHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -24,8 +20,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login") //登录界面
                 .loginProcessingUrl("/login") //登录认证地址,需与from表的action保持一致
-                .successHandler(authenticationSuccessHandler)
-                .failureHandler(authenticationFailureHandler)
                 .and()
                 .authorizeRequests()
                 .antMatchers("/login").permitAll() //不需登录可以访问的地址

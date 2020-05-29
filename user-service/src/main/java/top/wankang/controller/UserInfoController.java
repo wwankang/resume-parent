@@ -1,6 +1,9 @@
 package top.wankang.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import top.wankang.entity.UserInfo;
+import top.wankang.service.UserService;
 
 /**
  * @author wankang
@@ -10,6 +13,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserInfoController {
 
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value = "/userInfo")
+    public UserInfo getUserInfoByName(@RequestParam("name") String name){
+        return userService.getUserInfoByName(name);
+    }
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public String userList(@RequestParam("name") String name){
         System.out.println("userList执行。。。");

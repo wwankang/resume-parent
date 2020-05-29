@@ -2,7 +2,7 @@ package top.wankang.dao;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import top.wankang.entity.UserEntity;
+import top.wankang.entity.UserInfo;
 
 /**
  * @author wankang
@@ -11,5 +11,5 @@ import top.wankang.entity.UserEntity;
  */
 @Repository
 public interface UserMapper {
-    UserEntity loadByUsername(@Param("username") String username);
+    UserInfo getUserInfoByName(@Param("username") String username);
 }

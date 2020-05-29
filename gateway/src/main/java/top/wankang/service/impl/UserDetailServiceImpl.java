@@ -1,22 +1,15 @@
 package top.wankang.service.impl;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import top.wankang.entity.UserEntity;
-import top.wankang.service.UserService;
-
-import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
+import top.wankang.api.UserControllerApi;
+import top.wankang.entity.UserInfo;
 
 /**
  * @author wankang
@@ -24,14 +17,13 @@ import java.util.List;
  * @date 2020/5/27 9:32
  */
 @Service
-@Slf4j
 public class UserDetailServiceImpl implements UserDetailsService {
 
 
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
-    private UserService userService;
+    private UserControllerApi userControllerApi;
 
     //    @Resource
 //    private UserRoleMapper userRoleMapper ;
@@ -56,12 +48,11 @@ public class UserDetailServiceImpl implements UserDetailsService {
             }
         }
         return new User(username,password,grantedAuthorityList);*/
-        UserEntity userEntity = userService.loadUsername(username);
-        if (userEntity == null) {
+        UserInfo userInfo = userControllerApi.getUserInfoByName(username);
+        if (userInfo == null) {
             throw new UsernameNotFoundException("账号不存在");
         }
-        String password = passwordEncoder.encode(userEntity.getPassword());
-        log.info("登录账号：{}，密码：{}", username, password);
+        String password = passwordEncoder.encode(userInfo.getPassword());
         return new User(username, password, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
     }
 }

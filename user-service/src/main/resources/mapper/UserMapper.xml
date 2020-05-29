@@ -6,7 +6,7 @@
     <result column="name" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
   </resultMap>
-  <select id="loadByUsername" resultType="top.wankang.entity.UserEntity">
-    select id username,password from t_user_info where username = #{username}
+  <select id="getUserInfoByName" resultType="top.wankang.entity.UserInfo">
+    select * from t_user_info where username = #{username}
   </select>
 </mapper>
