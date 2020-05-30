@@ -4,6 +4,8 @@
 #spring.cloud.config.discovery.enabled=true
 #spring.cloud.config.profile=default
 #spring.cloud.config.label=master
+server:
+  port: 8803
 spring:
   application:
     name: user-service
@@ -22,8 +24,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8801/eureka/
-server:
-  port: 8803
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: top.wankang.entity
