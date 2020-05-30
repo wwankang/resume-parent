@@ -1,0 +1,18 @@
+server:
+  port: 8804
+spring:
+  application:
+    name: resume-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/wankangldm/resume-config.git
+          search-paths: config
+#          username: wankangldm
+#          password: wk19941110ldm
+      label: master
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8801/eureka/
