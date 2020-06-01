@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>top.wankang</groupId>
-    <artifactId>zuul-server</artifactId>
+    <artifactId>resume-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>zuul-server</name>
     <description>Demo project for Spring Boot</description>
@@ -51,11 +51,11 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>-->
-     <!--   <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-netflix-core</artifactId>
-            <version>1.4.7.RELEASE</version>
-        </dependency>-->
+        <!--   <dependency>
+               <groupId>org.springframework.cloud</groupId>
+               <artifactId>spring-cloud-netflix-core</artifactId>
+               <version>1.4.7.RELEASE</version>
+           </dependency>-->
 
     </dependencies>
 

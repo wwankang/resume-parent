@@ -1,0 +1,25 @@
+
+server:
+  port: 8805
+spring:
+  application:
+    name: zuul-server
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true
+    encoding: utf-8
+    content-type: text/xml
+    mode: HTM5
+    cache: false
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8801/eureka
+zuul:
+  routes:
+    resume-web:
+      path: /resume-web/**
+      serviceId: resume-web
+    user-service:
+      path: /user-service/**
+      serviceId: user-service
