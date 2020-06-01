@@ -1,6 +1,7 @@
 package top.wankang.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -49,9 +50,12 @@ public class UserDetailServiceImpl implements UserDetailsService {
         }
         return new User(username,password,grantedAuthorityList);*/
         UserInfo userInfo = userControllerApi.getUserInfoByName(username);
-        if (userInfo == null) {
-            throw new UsernameNotFoundException("账号不存在");
+        if (null == userInfo) {
+            throw new BadCredentialsException("帐号不存在，请重新输入");
         }
+        /*if (userInfo.getPassword().equals()) {
+
+        }*/
         String password = passwordEncoder.encode(userInfo.getPassword());
         return new User(username, password, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
     }
