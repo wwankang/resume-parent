@@ -1,9 +1,15 @@
 package top.wankang.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import top.wankang.entity.ResumeInfo;
 import top.wankang.entity.UserInfo;
+import top.wankang.service.ResumeService;
 import top.wankang.service.UserService;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @author wankang
@@ -15,6 +21,15 @@ public class UserInfoController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private ResumeService resumeService;
+
+    @RequestMapping(value = "/resume/index", method = RequestMethod.GET)
+    public ResumeInfo resumeIndex() {
+        ResumeInfo resumeInfo = resumeService.getResumeInfoByName("万康");
+
+        return resumeInfo;
+    }
 
     @RequestMapping(value = "/userInfo")
     public UserInfo getUserInfoByName(@RequestParam("name") String name){

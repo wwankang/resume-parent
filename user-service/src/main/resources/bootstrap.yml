@@ -14,3 +14,4 @@ spring:
       profile: dev
       #建议用lable去区分环境，默认是lable是master分支
       label: master
+      name: user-service

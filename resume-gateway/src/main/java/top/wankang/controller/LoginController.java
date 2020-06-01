@@ -19,12 +19,12 @@ public class LoginController {
     @RequestMapping("/login")
     public String userLogin() {
 
-        return "/login";
+        return "login";
     }
-    @RequestMapping("/index")
+    @RequestMapping("/")
     public String index() {
 
-        return "/resume/index";
+        return "redirect:/resume-web/";
     }
 
 }

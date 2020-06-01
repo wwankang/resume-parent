@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login") //登录界面
                 .loginProcessingUrl("/login") //登录认证地址,需与from表的action保持一致
-                .successForwardUrl("/index")
+                .successForwardUrl("/")//跳转到resume-web的resume/index路径
                 .and()
                 .authorizeRequests()
                 .antMatchers("/login").permitAll() //不需登录可以访问的地址

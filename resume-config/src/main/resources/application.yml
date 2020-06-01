@@ -3,15 +3,23 @@ server:
 spring:
   application:
     name: resume-config
+#  从远程仓库读取
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: https://github.com/wankangldm/resume-config.git
+#          search-paths: config
+#      label: master
+#      profile: dev
+#   从本地读取
+  profiles:
+    active: native
   cloud:
     config:
       server:
-        git:
-          uri: https://github.com/wankangldm/resume-config.git
-          search-paths: config
-#          username: wankangldm
-#          password: wk19941110ldm
-      label: master
+        native:
+          search-locations: classpath:config/
 eureka:
   client:
     serviceUrl:
