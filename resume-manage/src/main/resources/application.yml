@@ -1,0 +1,16 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8801/eureka/
+server:
+  port: 8806
+spring:
+  application:
+    name: resume-manage
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true
+    encoding: utf-8
+    content-type: text/xml
+    mode: HTM5
+    cache: false

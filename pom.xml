@@ -14,6 +14,7 @@
         <module>eureka-server</module>
         <module>resume-web</module>
         <module>user-service</module>
+        <module>resume-manage</module>
     </modules>
     <groupId>top.wankang</groupId>
     <artifactId>resume-parent</artifactId>

@@ -1,11 +1,14 @@
 package top.wankang.entity;
 
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import top.wankang.entity.base.BaseEntity;
 
 import java.io.Serializable;
+import java.util.Collection;
 
-public class UserInfo extends BaseEntity implements Serializable {
+public class UserInfo extends BaseEntity implements Serializable, UserDetails {
 
     private String name;
 
@@ -35,12 +38,43 @@ public class UserInfo extends BaseEntity implements Serializable {
     private String username;
     private String password;
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    private String role = "ROLE_USER";
+
+
     public String getUsername() {
         return username;
     }
 
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    public boolean isEnabled() {
+        return false;
+    }
+
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 
     public String getPassword() {
